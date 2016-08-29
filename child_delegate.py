@@ -80,10 +80,13 @@ class ChildItemDelegate(QtGui.QStyledItemDelegate):
             # the widget this makes it consistent with the way the editor widget
             # is mounted inside each element upon hover.
 
-            self.__paint_widget.render(painter,
+            pixmap = QtGui.QPixmap(style_options.rect.size())
+            pixmap.fill(QtCore.Qt.transparent)
+            self.__paint_widget.resize(style_options.rect.size())
+            self.__paint_widget.render(pixmap,
                                        QtCore.QPoint(0, 0),
                                        renderFlags=QtGui.QWidget.DrawChildren)
-
+            painter.drawPixmap(style_options.rect, pixmap, pixmap.rect())
             painter.restore()
 
     def _on_before_paint(self, widget, model_index, style_options):

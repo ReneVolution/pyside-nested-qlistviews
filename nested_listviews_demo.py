@@ -17,7 +17,7 @@ class NestedList(QtGui.QListView):
         self.image = QtGui.QIcon('Louie_Dewey_and_Huey.png').pixmap(512)
 
         items = []
-        for _ in range(10):
+        for _ in range(100):
             items.append({'name': 'test',
                           'childs': ['tick', 'trick', 'track'],
                           'img': self.image})
@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     app = QtGui.QApplication(sys.argv)
     widget = NestedList()
-    widget.resize(300, 600)
+    widget.resize(600, 600)
     widget.setWindowTitle('QListview Demo')
 
     widget.show()
